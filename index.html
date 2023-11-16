@@ -42,10 +42,10 @@
     for (var i = 0; i < radioStations.length; i++) {
       var station = radioStations[i];
       var stationDiv = document.createElement("div");
-      stationDiv.innerText = "Название: " + station.name + "<br>" +
-                              "Частота: " + station.frequency + "<br>" +
-                              "Местоположение: " + station.location + "<br>" +
-                              "Жанр: " + station.genre + "<br>" +
+      stationDiv.innerText = "Название: " + station.name + <br> +
+                              "Частота: " + station.frequency + <br> +
+                              "Местоположение: " + station.location + <br> +
+                              "Жанр: " + station.genre + <br> +
                               "Рейтинг: " + station.rating;
       radioStationsDiv.appendChild(stationDiv);
     }
