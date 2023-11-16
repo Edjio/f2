@@ -42,8 +42,8 @@
     for (var i = 0; i < radioStations.length; i++) {
       var station = radioStations[i];
       var stationDiv = document.createElement("div");
-      var s = "Название: %s Частота: %s Местоположение: %s Жанр: %s Рейтинг: %d";
-      stationDiv.innerText = String.Format(s, station.name, station.frequency, station.location, station.genre, station.rating );
+      var s = "Название: " + station.name + " Частота: " + station.frequency + " Местоположение: " + station.location + " Жанр: " + station.genre + " Рейтинг: " + station.rating;
+      stationDiv.innerText = s;
       radioStationsDiv.appendChild(stationDiv);
     }
   </script>
