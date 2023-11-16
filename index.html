@@ -41,9 +41,35 @@
     var radioStationsDiv = document.getElementById("radioStations");
     for (var i = 0; i < radioStations.length; i++) {
       var station = radioStations[i];
+      
       var stationDiv = document.createElement("div");
-      var s = "Название: " + station.name + " Частота: " + station.frequency + " Местоположение: " + station.location + " Жанр: " + station.genre + " Рейтинг: " + station.rating;
-      stationDiv.innerText = s;
+      stationDiv.innerText = "Название: " + station.name + " Частота: " + station.frequency + " Местоположение: " + station.location + " Жанр: " + station.genre + " Рейтинг: " + station.rating;
+      
+      var playButton = document.createElement("button");
+      playButton.innerText = "Play";
+      playButton.onclick = function() {
+        alert(station.play());
+      };
+      
+      var stopButton = document.createElement("button");
+      stopButton.innerText = "Stop";
+      stopButton.onclick = function() {
+        alert(station.stop());
+      };
+      
+      var changeLocationButton = document.createElement("button");
+      changeLocationButton.innerText = "Change Location";
+      changeLocationButton.onclick = function() {
+        var newLocation = prompt("Введите новое местоположение для радиостанции " + station.name + ":");
+        if (newLocation) {
+          alert(station.changeLocation(newLocation));
+        }
+      };
+      
+      stationDiv.appendChild(playButton);
+      stationDiv.appendChild(stopButton);
+      stationDiv.appendChild(changeLocationButton);
+      
       radioStationsDiv.appendChild(stationDiv);
     }
   </script>
