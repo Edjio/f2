@@ -1,43 +1,54 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <title>Сумма нечетных чисел</title>
-  <script>
-    function calculateSum() {
-      var num1 = parseFloat(document.getElementById("num1").value);
-      var num2 = parseFloat(document.getElementById("num2").value);
-      var num3 = parseFloat(document.getElementById("num3").value);
-      
-      var sum = 0;
-      
-      if (num1 % 2 !== 0) {
-        sum += num1;
-      }
-      if (num2 % 2 !== 0) {
-        sum += num2;
-      }
-      if (num3 % 2 !== 0) {
-        sum += num3;
-      }
-      
-      document.getElementById("result").innerHTML = "Сумма нечетных чисел: " + sum;
-    }
-  </script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Объект Радиостанция</title>
 </head>
 <body>
-  <h1>Сумма нечетных чисел</h1>
-  
-  <label for="num1">Число 1:</label>
-  <input type="number" id="num1"><br>
-  
-  <label for="num2">Число 2:</label>
-  <input type="number" id="num2"><br>
-  
-  <label for="num3">Число 3:</label>
-  <input type="number" id="num3"><br>
-  
-  <button onclick="calculateSum()">Посчитать сумму</button>
-  
-  <p id="result"></p>
+  <h1>Объект Радиостанция</h1>
+  <div id="radioStations"></div>
+
+  <script>
+    function RadioStation(name, frequency, location, genre, rating) {
+      this.name = name;
+      this.frequency = frequency;
+      this.location = location;
+      this.genre = genre;
+      this.rating = rating;
+    }
+
+    RadioStation.prototype.play = function() {
+      return "Играет радиостанция " + this.name + " на частоте " + this.frequency + " в " + this.location;
+    }
+
+    RadioStation.prototype.stop = function() {
+      return "Радиостанция " + this.name + " остановлена";
+    }
+
+    RadioStation.prototype.changeLocation = function(newLocation) {
+      this.location = newLocation;
+      return "Радиостанция " + this.name + " перемещена в " + this.location;
+    }
+
+    var radioStations = [
+      new RadioStation("Радио1", "100.5 FM", "Москва", "Рок", 4.5),
+      new RadioStation("Радио2", "92.8 FM", "Санкт-Петербург", "Поп", 3.2),
+      new RadioStation("Радио3", "105.2 FM", "Новосибирск", "Джаз", 4.9),
+      new RadioStation("Радио4", "98.3 FM", "Екатеринбург", "Классика", 4.1)
+    ];
+
+    var radioStationsDiv = document.getElementById("radioStations");
+    for (var i = 0; i < radioStations.length; i++) {
+      var station = radioStations[i];
+      var stationDiv = document.createElement("div");
+      stationDiv.innerText = "Название: " + station.name + "<br>" +
+                              "Частота: " + station.frequency + "<br>" +
+                              "Местоположение: " + station.location + "<br>" +
+                              "Жанр: " + station.genre + "<br>" +
+                              "Рейтинг: " + station.rating;
+      radioStationsDiv.appendChild(stationDiv);
+    }
+  </script>
 </body>
 </html>
